@@ -17,7 +17,7 @@ var dir = {
 var themeName = 'cold-omaha';
 
 // startups
-gulp.task('default', ['postachio']);
+gulp.task('default', ['less']);
 
 // node 
 gulp.task('postachio', function() {

@@ -155,6 +155,7 @@
           {% endfor %}
           {% endif %}
           <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
+          <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
           {% if post.author %}
           <div class="post-contributor">
             <h5><a href="#">by {{ post.author.name }}</a> 
@@ -244,7 +245,7 @@
             {% endif %}
             {% endfor %}
             {% endif %}					  
-						<a href="#">{{ post.title }}</a>
+						<a href="#">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
 					{% endif %}
 					{% endfor %}
