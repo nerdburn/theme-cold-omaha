@@ -130,7 +130,9 @@
     {% if posts %}
 		<section id="ccr-left-section" class="col-md-8">
 
-      <!-- get featured post -->
+      <!-- get latest post -->
+      {% for post in posts %}
+      {% if loop.first %}
 			<section id="ccr-world-news">
       	<section class="featured-world-news">
           {% if post.photos %}
@@ -154,118 +156,50 @@
             {% if post.tags %}
             &nbsp;|&nbsp; 
             {% for tag in post.tags %}
-            <a href="/tag/{{tag}}">{{ tag }}</a></h5>
+            <a href="/tag/{{ tag }}">{{ tag }}</a></h5>
             {% endfor %}
             {% endif %}
           </div>
           {% endif %}
         </section>
 			</section>
-			<!-- end featured post -->
-
+      {% endif %}<!-- end loop.first -->
+      {% endfor %}
+      <!-- end featured post -->
+			
 			<section id="ccr-blog">
         <div class="ccr-gallery-ttile">
           <span class="bottom"></span>
           <p>Latest Stories</p>
         </div>
+        
+        {% for post in posts %}
 				<article>
-					<figure class="blog-thumbnails">
-					<img src="{{ assets('img/blog-thumb-1.jpg') }}" alt="Article Image ">
-					</figure> <!-- /.blog-thumbnails -->
+				  {% if post.photos %}
+          {% for photo in post.photos %}
+          {% if loop.index == 1 %}
+  					<figure class="blog-thumbnails">
+              {% if photo %}
+              <img src="{{ photo.width_600 }}" />
+              {% else %}
+              <img src="http://placehold.it/400x300/0eafff/ffffff.png" alt="" />
+              {% endif %}
+  					</figure>          
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
 					<div class="blog-text">
-						<a href="single.html"><h1>This is the sample post title</h1></a>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-
-
+						<a href="single.html"><h1>{{ post.title }}</h1></a>
+            {{ post.content }}
 						<div class="meta-data">					
-							<span class="read-more"><a href="#">Read More</a></span>
+							<span class="read-more"><a href="{{ post.permalink }}">Read More</a></span>
 						</div>
 					</div>
-					
 				</article>
-
-				<article>
-
-						<h1><a href="single.html">This is the sample post title</a></h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-						<div class="meta-data">						
-							<span class="read-more"><a href="#">Read More</a></span>
-						</div>
-					
-				</article>
-
-				<article>
-					<figure class="blog-thumbnails">
-					<img src="{{ assets('img/blog-thumb-3.jpg') }}" alt="Article Image ">
-					</figure>
-					<div class="blog-text">
-						<h1><a href="single.html">This is the sample post title</a></h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-
-
-						<div class="meta-data">						
-							<span class="read-more"><a href="#">Read More</a></span>
-						</div>
-					</div>
-					
-				</article>
-
-				<article>
-						<h1><a href="single.html">This is the sample post title</a></h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-
-
-						<div class="meta-data">						
-							<span class="read-more"><a href="#">Read More</a></span>
-						</div>
-					
-				</article>
-
-				<article>
-					<figure class="blog-thumbnails">
-					<img src="{{ assets('img/blog-thumb-2.jpg') }}" alt="Article Image ">
-					</figure>
-					<div class="blog-text">
-						<h1><a href="single.html">This is the sample post title</a></h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-
-
-						<div class="meta-data">						
-							<span class="read-more"><a href="#">Read More</a></span>
-						</div>
-					</div>
-					
-				</article>
-
-				<article>
-					<figure class="blog-thumbnails">
-					<img src="{{ assets('img/blog-thumb-5.jpg') }}" alt="Article Image ">
-					</figure>
-					<div class="blog-text">
-						<h1><a href="single.html">This is the sample post title</a></h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
-						</p>
-
-						<div class="meta-data">						
-							<span class="read-more"><a href="#">Read More</a></span>
-						</div>
-					</div>
-					
-				</article>
+				{% endfor %}
 				
 				<div class="clearfix"></div>
-
 			</section>
 
 				<section class="bottom-border"></section>
@@ -347,8 +281,7 @@
     
                 </section>
     
-                <section class="bottom-border"></section>
-
+      <section class="bottom-border"></section>
 		</section>
 		{% endif %} <!-- end if posts -->
 
