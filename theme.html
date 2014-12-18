@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="" >
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ site.name }}</title>
+	
+  {{ header_meta }}	
+	
+	<link rel="stylesheet" type="text/css" href="{{ assets('css/style.css') }}">
+	
+	<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+	<!-- share this
+	<script type="text/javascript">var switchTo5x=true;</script>
+  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+  <script type="text/javascript">stLight.options({publisher: "3da1a43d-5f6f-41bd-9743-d6ae71c62870", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+  -->
+</head>
+
+<body>
+  
+<!-- facebook
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+-->
+
+<header id="ccr-header">
+	<section id="ccr-nav-top" class="fullwidth">
+		<div class="">
+			<div class="container">
+				<nav class="top-menu">
+					<ul class="left-top-menu">
+						<li><a href="/">Home</a></li>
+            {% if pages %}
+            {% for page in pages %}
+            <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
+            {% endfor %}
+            {% endif %}						
+					</ul>
+          <!--
+					<ul class="right-top-menu pull-right">
+						<li><a href="#">Login</a></li>
+						<li><a href="/page/contribute">Contribute</a></li>
+						<li><a href="/page/report">Report</a></li>
+						<li>
+							<form class="form-inline" role="form" action="#">
+								<input type="search" placeholder="Search Cold Omaha..." required>
+								  <button type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</li>
+					</ul>
+				  -->
+				</nav>
+			</div>
+		</div>	
+	</section>
+	
+	<section id="ccr-site-title">
+		<div class="container">
+			<div class="site-logo">
+				<a href="/" class="navbar-brand">
+					<img src="{{ assets('img/logo-hor.png') }}" alt="Middle Logo" />
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="ccr-nav-main">
+		<nav class="main-menu">
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".ccr-nav-main">
+				    <i class="fa fa-bars"></i>
+			    </button>
+				</div>
+
+				<div class="collapse navbar-collapse ccr-nav-main">
+					<ul class="nav navbar-nav">
+						<li><a href="/">Home</a></li>
+						<li class="dropdown">
+							<a href="/tag/sports">Sports <i class="fa fa-caret-down"></i></a>
+							<ul class="sub-menu">
+					      <li><a href="/tag/football">Football</a></li>
+					      <li><a href="/tag/hockey">Hockey</a></li>
+							  <li><a href="/tag/baseball">Baseball</a></li>
+					    </ul>
+						</li>
+            <li class="dropdown">
+							<a href="/tag/teams">Teams <i class="fa fa-caret-down"></i></a>
+							<ul class="sub-menu">
+		          	<li><a href="/tag/vikings">Vikings</a></li>
+		          	<li><a href="/tag/wild">Wild</a></li>
+						  	<li><a href="/tag/twins">Twins</a></li>
+                <li><a href="/tag/timberwolves">Timberwolves</a></li>
+                <li><a href="/tag/gophers">Gophers</a></li>
+			        </ul>
+						</li>
+						<li><a href="/tag/podcast">Podcasts</a></li>
+            <li><a href="/tag/video">Videos</a></li>
+					</ul>
+				</div>
+        
+				<div id="currentTime" class="pull-right current-time">
+					<i class="fa fa-clock-o"></i> <span class="clock"></span>
+				</div>
+
+			</div>
+		</nav>
+	</section>
+
+</header>
+
+{% if is_home %}
+<section id="ccr-main-section">
+	<div class="container">
+
+    {% if posts %}
+		<section id="ccr-left-section" class="col-md-8">
+
+      <!-- get featured post -->
+			<section id="ccr-world-news">
+      	<section class="featured-world-news">
+          {% if post.photos %}
+          {% for photo in post.photos %}
+          {% if loop.index == 1 %}
+            <a href="{{ post.permalink }}">
+              {% if photo %}
+              <img src="{{ photo.width_600 }}" />
+              {% else %}
+              <img src="http://placehold.it/400x300/0eafff/ffffff.png" alt="" />
+              {% endif %}
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
+          <div class="post-contributor">
+            <h5><a href="#">by {{ post.author.name }}</a> 
+            {% if post.tags %}
+            &nbsp;|&nbsp; 
+            {% for tag in post.tags %}
+            <a href="/tag/{{tag}}">{{ tag }}</a></h5>
+            {% endfor %}
+            {% endif %}
+          </div>				
+        </section>
+			</section>
+			<!-- end featured post -->
+
+			<section id="ccr-blog">
+        <div class="ccr-gallery-ttile">
+          <span class="bottom"></span>
+          <p>Latest Stories</p>
+        </div>
+				<article>
+					<figure class="blog-thumbnails">
+					<img src="{{ assets('img/blog-thumb-1.jpg') }}" alt="Article Image ">
+					</figure> <!-- /.blog-thumbnails -->
+					<div class="blog-text">
+						<a href="single.html"><h1>This is the sample post title</h1></a>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+
+
+						<div class="meta-data">					
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					</div>
+					
+				</article>
+
+				<article>
+
+						<h1><a href="single.html">This is the sample post title</a></h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+						<div class="meta-data">						
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					
+				</article>
+
+				<article>
+					<figure class="blog-thumbnails">
+					<img src="{{ assets('img/blog-thumb-3.jpg') }}" alt="Article Image ">
+					</figure>
+					<div class="blog-text">
+						<h1><a href="single.html">This is the sample post title</a></h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+
+
+						<div class="meta-data">						
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					</div>
+					
+				</article>
+
+				<article>
+						<h1><a href="single.html">This is the sample post title</a></h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+
+
+						<div class="meta-data">						
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					
+				</article>
+
+				<article>
+					<figure class="blog-thumbnails">
+					<img src="{{ assets('img/blog-thumb-2.jpg') }}" alt="Article Image ">
+					</figure>
+					<div class="blog-text">
+						<h1><a href="single.html">This is the sample post title</a></h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+
+
+						<div class="meta-data">						
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					</div>
+					
+				</article>
+
+				<article>
+					<figure class="blog-thumbnails">
+					<img src="{{ assets('img/blog-thumb-5.jpg') }}" alt="Article Image ">
+					</figure>
+					<div class="blog-text">
+						<h1><a href="single.html">This is the sample post title</a></h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. 
+						</p>
+
+						<div class="meta-data">						
+							<span class="read-more"><a href="#">Read More</a></span>
+						</div>
+					</div>
+					
+				</article>
+				
+				<div class="clearfix"></div>
+
+			</section>
+
+				<section class="bottom-border"></section>
+
+                <section id="ccr-home-sub-cats">
+                    <div class="ccr-gallery-ttile">
+                            <span class="bottom"></span>
+                            <p>Latest Video</p>
+                    </div>
+                    <ul>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-4.jpg" alt="thumbnail-small-1.jpg">
+                                    <p><a href="#postlink">Read More</a></p>
+                                </div>
+                                <h5><a href="#">Video story text...</a></h5>
+                            </li>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-5.jpg" alt="thumbnail-small-1.jpg">
+                                    <p><a href="#postlink">Read More</a></p>
+                                </div>
+                                <h5><a href="#">Video story text...</a></h5>
+                            </li>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-6.jpg" alt="thumbnail-small-1.jpg">
+                                    <p><a href="#postlink">Read More</a></p>
+                                </div>
+                                <h5><a href="#">Video story text...</a></h5>
+                            </li>
+
+                        </ul>
+                        <span class="read-more">
+                        	<a href="#">View All Video</a>
+                        </span>
+    
+                </section>
+    
+                <section class="bottom-border"></section>
+                
+                <section id="ccr-home-sub-cats">
+                    <div class="ccr-gallery-ttile">
+                            <span class="bottom"></span>
+                            <p>Cold Omaha Podcasts</p>
+                    </div>
+                    <ul>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-4.jpg" alt="Podcast Name">
+                                    <p><a href="#postlink" title="Podcast Name">Listen</a></p>
+                                </div>
+                                <h5><a href="#">Podcast Name</a></h5>
+                            </li>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-5.jpg" alt="Podcast Name">
+                                    <p><a href="#postlink" title="Podcast Name">Listen</a></p>
+                                </div>
+                                <h5><a href="#">Podcast Name</a></h5>
+                            </li>
+                            <li>
+                                
+                                <div class="ccr-thumbnail">
+                                    <img src="assets/img/sports-thumb-6.jpg" alt="Podcast Name">
+                                    <p><a href="#postlink" title="Podcast Name">Listen</a></p>
+                                </div>
+                                <h5><a href="#">Podcast Name</a></h5>
+                            </li>
+                        </ul>
+                        <span class="read-more">
+                        	<a href="#">View All Podcasts</a>
+                        </span>
+    
+                </section>
+    
+                <section class="bottom-border"></section>
+
+		</section>
+		{% end if %} <!-- end if posts -->
+
+		<aside id="ccr-right-section" class="col-md-4 ccr-home">
+			<section id="sidebar-latest-video">
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><strong>Latest Video</strong></p>
+				</div>
+				<ul>
+					<li>
+						<img src="assets/img/sports-thumb-10.jpg" alt="Avatar">
+						<a href="#">This is the 1st video headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/thumbnail-small-7.jpg" alt="Avatar">
+						<a href="#">This is the 2nd video headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-5.jpg" alt="Avatar">
+						<a href="#">This is the 3rd video headline text</a>
+					</li>
+					<span class="read-more">
+                        <a href="#">View All Video</a>
+                    </span>
+				</ul>
+
+			</section>
+            <section id="ccr-sidebar-add-place">
+                <div class="sidebar-add-place">
+                    370x250 px
+                </div> 
+            </section>
+			<section id="sidebar-popular-post">
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><strong>Cold Omaha Podcasts</strong></p>
+				</div>
+				<ul>
+					<li>
+						<img src="assets/img/sports-thumb-10.jpg" alt="Avatar">
+						<a href="#">Podcast name</a>
+					</li>
+					<li>
+						<img src="assets/img/thumbnail-small-7.jpg" alt="Avatar">
+						<a href="#">Podcast name</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-5.jpg" alt="Avatar">
+						<a href="#">Podcast name</a>
+					</li>
+				</ul>
+
+			</section>
+
+
+			<section id="ccr-sidebar-newslater">
+				
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><label for="sb-newslater"><strong>Newsletter</strong></label></p>
+				</div>
+				
+				<div class="sidebar-newslater-form">
+					<form class="ccr-gallery-ttile" action="#">
+						<input type="email" id="sb-newslater" name="sb-newslater" placeholder="Enter your email address" required>
+						<button type="submit">Subscribe</button>
+
+					</form>
+				</div>
+				
+			</section>
+
+			<section id="ccr-find-on-fb">
+				<div class="find-fb-title">
+					<span><i class="fa fa-facebook"></i></span> Find us on Facebook
+				</div>
+				<div class="find-on-fb-body">
+
+					<div class="fb-like-box" data-href="https://www.facebook.com/105theticket/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+
+				</div>
+			</section>
+
+
+		</aside>
+
+
+	</div>
+</section>
+{% elseif is_post %}
+
+{% endif %}
+
+<aside id="ccr-footer-sidebar">
+	<div class="container">
+
+		<ul>
+			<li class="col-md-3">
+				<h5>About Us</h5>
+				<div class="about-us">
+				  {{ site.description }}
+				</div>
+        <span class="read-more">
+          <a href="/page/about">More About Us</a>
+        </span>				
+			</li>
+			<li class="col-md-3">
+				<h5>Popular Stories</h5>
+				<ul>
+					<li>
+						<img src="assets/img/sports-thumb-3.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-4.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-5.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="col-md-3">
+				<h5>Recent Stories</h5>
+				<ul>
+					<li>
+						<img src="assets/img/sports-thumb-1.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-2.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+					<li>
+						<img src="assets/img/sports-thumb-6.jpg" alt="Avatar">
+						<a href="#">Story headline text</a>
+					</li>
+				</ul>
+				
+			</li>
+			<li class="col-md-3">
+				<h5>Tags</h5>
+				<div class="tagcloud">
+					<a href="#">Football</a>
+					<a href="#">Baseball</a>
+					<a href="#">Soccer</a>
+					<a href="#">USA</a>
+					<a href="#">Hockey</a>
+          <a href="#">Vikings</a>
+          <a href="#">Twins</a>
+          <a href="#">Wild</a>
+          <a href="#">Timberwolves</a>
+          <a href="#">Gophers</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+</aside>
+
+<footer id="ccr-footer">
+	<div class="container">
+	 	<div class="copyright">
+	 		&copy; 2015 Cold Omaha. All Rights Reserved
+	 	</div>
+	 	<div class="footer-social-icons">
+	 		<ul>
+	 			<li>
+	 				<a href="#"  class="google-plus"><i class="fa fa-google-plus"></i></a>
+	 			</li>
+	 			<li >
+	 				<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+	 			</li>
+	 			<li >
+	 				<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+	 			</li>
+	 			<li >
+	 				<a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+	 			</li>
+	 		</ul>
+	 	</div>
+	</div>
+</footer>
+
+{{ footer_meta }}
+
+<script src="assets/js/cold-omaha.min.js"></script>
+
+</body>
+</html>
