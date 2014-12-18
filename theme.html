@@ -186,24 +186,36 @@
 				</ul>
 				
 			</li>
+			
+			{% if posts %}
 			<li class="col-md-3">
 				<h5>Recent Stories</h5>
 				<ul>
+				  {% for post in posts %}
+				  {% if loop.index < 4 %}
 					<li>
-						<img src="{{ assets('img/sports-thumb-1.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
+            {% if post.photos %}
+            {% for photo in post.photos %}
+            {% if loop.index == 1 %}
+              <a href="{{ post.permalink }}">
+                {% if photo %}
+                <img src="{{ photo.width_600 }}" />
+                {% else %}
+                <img src="http://placehold.it/400x300/0eafff/ffffff.png" alt="" />
+                {% endif %}
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}					  
+						<a href="#">{{ post.title }}</a>
 					</li>
-					<li>
-						<img src="{{ assets('img/sports-thumb-2.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
-					</li>
-					<li>
-						<img src="{{ assets('img/sports-thumb-6.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
-					</li>
+					{% endif %}
+					{% endfor %}
 				</ul>
-				
 			</li>
+			{% endif %}
+			
 			<li class="col-md-3">
 				<h5>Tags</h5>
 				{% if site.tags %}
