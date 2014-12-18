@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ site.name }} | Cold Omaha</title>
 	
-  
+	{{ header_meta }}
 	
 	<link rel="stylesheet" type="text/css" href="{{ assets('css/style.css') }}">
 	
@@ -264,11 +264,13 @@
 			{% endif %}
 			
 			<li class="col-md-3">
-				<h5>Tags</h5>
+				<h5>Latest Tags</h5>
 				{% if site.tags %}
 				<div class="tagcloud">
 				  {% for tag in site.tags %}
+				  {% if loop.index < 11 %}
 					<a href="/tag/{{tag.name}}">{{tag.name}}</a>
+					{% endif %}
 					{% endfor %}
 				</div>
 				{% endif %}
