@@ -123,6 +123,12 @@
 
 </header>
 
+<!-- end header -->
+
+
+
+
+
 {% if is_home %}
 <section id="ccr-main-section">
 	<div class="container">
@@ -191,7 +197,7 @@
           {% endif %}
 					<div class="blog-text">
 						<a href="single.html"><h1>{{ post.title }}</h1></a>
-            {{ post.content }}
+            {{ post.content|truncate(280, false, '...') }}
 						<div class="meta-data">					
 							<span class="read-more"><a href="{{ post.permalink }}">Read More</a></span>
 						</div>
@@ -283,13 +289,12 @@
 		</aside><!-- end right side -->
 
 	</div>
-</section>
+</section><!-- end main section -->
 
 {% elif is_post %}
 
 <section id="ccr-main-section">
 	<div class="container">
-
 
 		<section id="ccr-left-section" class="col-md-8">
 
