@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{ site.name }} | Cold Omaha</title>
 	
-  {{ header_meta }}	
+  
 	
 	<link rel="stylesheet" type="text/css" href="{{ assets('css/style.css') }}">
 	
@@ -206,31 +206,41 @@
           <a href="/page/about">More About Us</a>
         </span>				
 			</li>
+			
+			{% if posts %}
 			<li class="col-md-3">
 				<h5>Popular Stories</h5>
 				<ul>
+				  {% for post in posts %}
+				  {% if loop.index > 4 and loop.index < 8 %}
 					<li>
-						<img src="{{ assets('img/sports-thumb-3.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
+            {% if post.photos %}
+            {% for photo in post.photos %}
+            {% if loop.index == 1 %}
+              <a href="{{ post.permalink }}">
+                {% if photo %}
+                <img src="{{ photo.width_600 }}" />
+                {% else %}
+                <img src="http://placehold.it/400x300/0eafff/ffffff.png" alt="" />
+                {% endif %}
+              </a>
+            {% endif %}
+            {% endfor %}
+            {% endif %}					  
+						<a href="#">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
-					<li>
-						<img src="{{ assets('img/sports-thumb-4.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
-					</li>
-					<li>
-						<img src="{{ assets('img/sports-thumb-5.jpg') }}" alt="Avatar">
-						<a href="#">Story headline text</a>
-					</li>
+					{% endif %}
+					{% endfor %}
 				</ul>
-				
 			</li>
+			{% endif %}
 			
 			{% if posts %}
 			<li class="col-md-3">
 				<h5>Recent Stories</h5>
 				<ul>
 				  {% for post in posts %}
-				  {% if loop.index < 4 %}
+				  {% if loop.index < 4 and loop.index > 0 %}
 					<li>
             {% if post.photos %}
             {% for photo in post.photos %}
