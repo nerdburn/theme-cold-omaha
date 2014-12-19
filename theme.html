@@ -128,19 +128,93 @@
 
 
 
-
-{% if is_home %}
 <section id="ccr-main-section">
 	<div class="container">
 
 		<section id="ccr-left-section" class="col-md-8">
 
-      <!-- featured post -->
-      <!-- get latest post -->
-      {% for post in posts %}
-      {% if loop.first %}
-      <section id="ccr-world-news">
-      	<section class="featured-world-news">
+      {% if is_home %}
+      
+        <!-- featured post -->
+        <!-- get latest post -->
+        {% for post in posts %}
+        {% if loop.first %}
+        <section id="ccr-world-news">
+        	<section class="featured-world-news">
+            {% if post.photos %}
+            {% for photo in post.photos %}
+            {% if loop.index == 1 %}
+              <a href="{{ post.permalink }}">
+                {% if photo %}
+                <img src="{{ photo.width_600 }}" />
+                {% else %}
+                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                {% endif %}
+              </a>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
+            <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
+            {% if post.author %}
+            <div class="post-contributor">
+              <h5>by {{ post.author.name }}</h5>
+            </div>
+            {% endif %}
+          </section>
+        </section>
+        {% endif %}<!-- end loop.first -->
+        {% endfor %}
+        <!-- end featured post -->
+        <!-- end -->
+      			
+        <!-- put below featured post in left column -->
+        <section id="ccr-blog">
+          <div class="ccr-gallery-ttile">
+            <span class="bottom"></span>
+            <p>Latest Stories</p>
+          </div>
+
+          {% for post in posts %}
+        	<article>
+        	  {% if post.photos %}
+            {% for photo in post.photos %}
+            {% if loop.index == 1 %}
+        			<figure class="blog-thumbnails">
+                {% if photo %}
+                <img src="{{ photo.width_600 }}" />
+                {% else %}
+                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                {% endif %}
+        			</figure>          
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        		<div class="blog-text">
+        			<a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
+              <p>{{ post.content|striptags|truncate(175, false, '...') }}</p>
+        			<div class="meta-data">					
+        				<span class="read-more"><a href="{{ post.permalink }}">Read More</a></span>
+        			</div>
+        		</div>
+        	</article>
+        	{% endfor %}
+
+        	<div class="clearfix"></div>
+        </section>
+        <!-- end ccr blog -->
+    
+      {% elif is_post %}
+      
+      {% if post %}
+			<div class="current-page">
+				<a href="/"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> {{ post.title }}
+			</div>
+
+			<article id="ccr-article">
+				<h1>{{ post.title }}</h1>
+				
+				<div class="col-xs-12">
           {% if post.photos %}
           {% for photo in post.photos %}
           {% if loop.index == 1 %}
@@ -153,56 +227,73 @@
             </a>
           {% endif %}
           {% endfor %}
-          {% endif %}
-          <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
-          <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
-          {% if post.author %}
-          <div class="post-contributor">
-            <h5>by {{ post.author.name }}</h5>
-          </div>
-          {% endif %}
-        </section>
-      </section>
-      {% endif %}<!-- end loop.first -->
-      {% endfor %}
-      <!-- end featured post -->
-      <!-- end -->
-      			
-      <!-- put below featured post in left column -->
-      <section id="ccr-blog">
-        <div class="ccr-gallery-ttile">
-          <span class="bottom"></span>
-          <p>Latest Stories</p>
+          {% endif %}				  
         </div>
-
-        {% for post in posts %}
-      	<article>
-      	  {% if post.photos %}
-          {% for photo in post.photos %}
-          {% if loop.index == 1 %}
-      			<figure class="blog-thumbnails">
-              {% if photo %}
-              <img src="{{ photo.width_600 }}" />
-              {% else %}
-              <img src="http://placehold.it/400x300/e5e5e5" alt="" />
-              {% endif %}
-      			</figure>          
+        
+        <div class="clearfix"></div>
+				
+				<div class="col-xs-3">
+          <div class="20pxSpacer"><time datetime="11/30/2014">{{ post.created_at }}</time></div>
+          
+          {% if post.author %}
+          <div class="20pxSpacer">by <a href="#author">{{ post.author.name }}</a></div>
           {% endif %}
-          {% endfor %}
-          {% endif %}
-      		<div class="blog-text">
-      			<a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
-            <p>{{ post.content|striptags|truncate(175, false, '...') }}</p>
-      			<div class="meta-data">					
-      				<span class="read-more"><a href="{{ post.permalink }}">Read More</a></span>
-      			</div>
-      		</div>
-      	</article>
-      	{% endfor %}
+          
+          <div id="social-buttons">
+            <span class='st_facebook' displayText='Facebook'></span>
+            <span class='st_twitter' displayText='Tweet'></span>
+            <span class='st_googleplus' displayText='Google +'></span>
+            <span class='st_email' displayText='Email'></span>
+          </div>
+        </div>
+        
+        <div class="col-xs-9" data-type-cleanup="true">
+          {{ post.content }}
+        </div>
+                
+				<div class="article-tags">
+					Filed under: 
+					{% if post.tags %}
+					{% for tag in post.tags %}
+					  <a href="/tag/{{ tag.name }}">{{ tag.name }}</a>
+					{% endfor %}
+					{% endif %}
+				</div>
 
-      	<div class="clearfix"></div>
-      </section>
-      <!-- end ccr blog -->
+			</article>
+			{% endif %}
+
+      {% if posts %}
+			<section id="ccr-article-related-post">
+				<div class="ccr-gallery-ttile">
+						<span class="bottom"></span>
+						<p>Related Stories</p>
+				</div>
+				<ul>
+				    {% for post in posts %}
+						<li>
+							<div class="ccr-thumbnail">
+                {% if post.photos %}
+                {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+                  {% if photo %}
+                  <img src="{{ photo.width_600 }}" />
+                  {% else %}
+                  <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <p><a href="{{ post.permalink }}">Read More</a></p>
+							</div>
+							<h5><a href="{{ post.permalink }}">{{ post.title }}</a></h5>
+						</li>
+						{% endfor %}
+					</ul>
+				</section>      
+				{% endif %}
+    
+      {% endif %}<!-- end if is_home, etc. -->
       
 		</section>
 		<!-- end ccr left section -->
@@ -307,7 +398,236 @@
 </section>
 <!-- end main section -->
 
-{% endif %}
+<!-- is post block -->
+{% elif is_post %}
+
+<section id="ccr-main-section">
+	<div class="container">
+
+		<section id="ccr-left-section" class="col-md-8">
+
+      {% if post %}
+      
+			<div class="current-page">
+				<a href="index.html"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> <a href="#">Soccer <i class="fa fa-angle-double-right"></i></a> {{ post.title }}
+			</div>
+
+			<article id="ccr-article">
+				<h1>{{ post.title }}</h1>
+				<div class="col-xs-12">
+          <img src="{{ assets('img/mn-wild-story.jpg') }}" alt="1st Image">
+        </div>
+        
+        <div class="clearfix"></div>
+				
+				<div class="col-xs-3">
+          <div class="20pxSpacer"><a href="#">Soccer</a></div>
+          <div class="20pxSpacer"><time datetime="11/30/2014">{{ post.created_at }}</time></div>
+          {% if post.author %}
+          <div class="20pxSpacer">by <a href="#author">{{ post.author.name }}</a></div>
+          {% endif %}
+          <div id="social-buttons">
+            <span class='st_facebook' displayText='Facebook'></span>
+            <span class='st_twitter' displayText='Tweet'></span>
+            <span class='st_googleplus' displayText='Google +'></span>
+            <span class='st_email' displayText='Email'></span>
+          </div>
+        </div>
+        
+                <div class="col-xs-9">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium!
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, provident, nam sint iure excepturi possimus dolor et iusto id praesentium! Quaerat veritatis placeat ut ad repellendus maxime quos id consequuntur.
+                    </p>
+                </div>
+				<div class="article-tags">
+					Filed under: <a href="#tag1">Soccer</a>, <a href="#tag2">Tag2</a>, <a href="#tag3">Tag3</a>
+				</div>
+
+			</article>
+
+			<section id="ccr-article-related-post">
+				<div class="ccr-gallery-ttile">
+						<span class="bottom"></span>
+						<p>Related Stories</p>
+				</div>
+				<ul>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-4.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-5.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-6.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-7.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-8.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-9.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-10.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+						<li>
+							
+							<div class="ccr-thumbnail">
+								<img src="{{ assets('img/sports-thumb-11.jpg') }}" alt="thumbnail-small-1.jpg">
+								<p><a href="#postlink">Read More</a></p>
+							</div>
+							<h5><a href="#">Story headline text...</a></h5>
+						</li>
+					</ul>
+
+
+			</section>
+			
+      {% endif %}
+      
+			<section class="bottom-border"></section>
+
+		</section>
+
+		<aside id="ccr-right-section" class="col-md-4 ccr-home">
+			<section id="sidebar-latest-video">
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><strong>Latest Video</strong></p>
+				</div>
+				<ul>
+					<li>
+						<img src="{{ assets('img/sports-thumb-10.jpg') }}" alt="Avatar">
+						<a href="#">This is the 1st video headline text</a>
+					</li>
+					<li>
+						<img src="{{ assets('img/thumbnail-small-7.jpg') }}" alt="Avatar">
+						<a href="#">This is the 2nd video headline text</a>
+					</li>
+					<li>
+						<img src="{{ assets('img/sports-thumb-5.jpg') }}" alt="Avatar">
+						<a href="#">This is the 3rd video headline text</a>
+					</li>
+				</ul>
+
+			</section>
+
+			<section id="sidebar-popular-post">
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><strong>Popular Stories</strong></p>
+				</div>
+				<ul>
+					<li>
+						<img src="{{ assets('img/sports-thumb-10.jpg') }}" alt="Avatar">
+						<a href="#">This is the 1st popular story headline text</a>
+					</li>
+					<li>
+						<img src="{{ assets('img/thumbnail-small-7.jpg') }}" alt="Avatar">
+						<a href="#">This is the 2nd popular story headline text</a>
+					</li>
+					<li>
+						<img src="{{ assets('img/sports-thumb-5.jpg') }}" alt="Avatar">
+						<a href="#">This is the 3rd popular story headline text</a>
+					</li>
+				</ul>
+
+			</section>
+
+			<section id="ccr-sidebar-add-place">
+				<div class="sidebar-add-place">
+					370x250 px
+				</div> 
+			</section>
+
+
+			<section id="ccr-sidebar-newslater">
+				
+				<div class="ccr-gallery-ttile">
+					<span></span> 
+					<p><label for="sb-newslater"><strong>Newsletter</strong></label></p>
+				</div>
+				
+				<div class="sidebar-newslater-form">
+					<form class="ccr-gallery-ttile" action="#">
+						<input type="email" id="sb-newslater" name="sb-newslater" placeholder="Enter your email address" required>
+						<button type="submit">Subscribe</button>
+
+					</form>
+				</div>
+				
+			</section>
+
+			<section id="ccr-find-on-fb">
+				<div class="find-fb-title">
+					<span><i class="fa fa-facebook"></i></span> Find us on Facebook
+				</div>
+				<div class="find-on-fb-body">
+
+					<div class="fb-like-box" data-href="https://www.facebook.com/105theticket/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+
+				</div>
+			</section>
+
+
+		</aside>
+
+
+	</div>
+</section>
+<!-- end if is_post -->
+
+
+
+
+
+
 
 <!-- footer below -->
 <aside id="ccr-footer-sidebar">
