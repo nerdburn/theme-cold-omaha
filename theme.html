@@ -204,6 +204,14 @@
         </section>
         <!-- end ccr blog -->
     
+      {% elif post %}
+
+        <h1>is post page</h1>
+
+      {% elif post.type === 'page' %}
+
+        <h1>is page page</h1>    
+    
       {% endif %}<!-- end if is_home, etc. -->
       
 		</section>
