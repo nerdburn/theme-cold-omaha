@@ -1589,7 +1589,7 @@ li:hover .ccr-thumbnail p {
   border-bottom: 2px solid #df1f2c;
 }
 #ccr-nav-top ul:last-child li:last-child {
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 #ccr-nav-top ul:last-child li:last-child:hover {
   border-bottom: none;
