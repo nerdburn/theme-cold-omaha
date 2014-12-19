@@ -1295,7 +1295,10 @@ header,
 hgroup,
 nav,
 section,
-summary {
+summary,
+ul,
+li,
+ol {
   /*font-family: "Tahoma",sans-serif;*/
   font-family: 'PT Serif', serif;
   font-weight: 400;
@@ -1329,9 +1332,9 @@ a:hover {
   max-width: 1170px;
   padding: 0px;
 }
-ul {
+ul,
+ol {
   list-style: none;
-  padding-left: 0px;
 }
 img {
   width: 100%;
@@ -1554,16 +1557,14 @@ li:hover .ccr-thumbnail p {
   width: 100%;
 }
 #ccr-nav-top {
-  height: 41px;
+  display: block;
+  padding: 0;
+  margin: 0;
 }
 /* 2.1 - ccr-nav-top 
 ---------------------------------------------------------------------- */
-#ccr-nav-top ul {
-  margin: 0px;
-  padding: 0px;
-}
 #ccr-nav-top ul li {
-  list-style: none;
+  list-style-type: none;
   float: left;
   margin: 0px;
   padding: 0px;
