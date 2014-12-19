@@ -1270,9 +1270,6 @@ ul.icons-ul > li .icon-li {
 .icon-share-sign:before {
   content: "\f14d";
 }
-body {
-  line-height: 1.5;
-}
 /* 1.0 - Common Styles
 ---------------------------------------------------------------------- */
 @font-face {
@@ -1295,10 +1292,7 @@ header,
 hgroup,
 nav,
 section,
-summary,
-ul,
-li,
-ol {
+summary {
   /*font-family: "Tahoma",sans-serif;*/
   font-family: 'PT Serif', serif;
   font-weight: 400;
@@ -1332,9 +1326,9 @@ a:hover {
   max-width: 1170px;
   padding: 0px;
 }
-ul,
-ol {
+ul {
   list-style: none;
+  padding-left: 0px;
 }
 img {
   width: 100%;
@@ -1351,6 +1345,7 @@ img {
 .ccr-gallery-ttile {
   width: 100%;
   height: 40px;
+  line-height: 40px;
   background: #f2f2f4;
   border-right: 5px solid #df1f2c;
   border-left: 8px solid #df1f2c;
@@ -1374,6 +1369,7 @@ img {
 .date-like-comment .comments {
   float: right;
   padding: 5px 15px 0 5px;
+  line-height: 40px;
   display: inline-block;
 }
 .date-like-comment .like i,
@@ -1392,6 +1388,7 @@ img {
 .like-comment-readmore a {
   padding-right: 10px;
   display: inline-block;
+  line-height: 40px;
 }
 .like-comment-readmore .read-more,
 .read-more a {
@@ -1399,6 +1396,7 @@ img {
   background-color: #df1f2c;
   display: inline-block;
   padding: 0px 10px;
+  line-height: 30px;
 }
 .like-comment-readmore .read-more:hover,
 .read-more a:hover {
@@ -1462,18 +1460,21 @@ li:hover .ccr-thumbnail p {
 .current-page {
   color: #5f5f5f;
   height: 40px;
+  line-height: 40px;
 }
 .current-page a {
   color: #afafaf;
 }
 .ccr-category-post h5 {
   font-size: 1.2em;
+  line-height: 30px;
 }
 .nav-paging i {
   color: #FFF;
   background-color: #df1f2c;
   height: 40px;
   width: 40px;
+  line-height: 40px;
 }
 .nav-paging i:hover {
   background-color: #47cad4;
@@ -1514,6 +1515,7 @@ li:hover .ccr-thumbnail p {
   text-align: center;
   height: 40px;
   width: 40px;
+  line-height: 40px;
   float: left;
 }
 #ccr-contact-sidebar li .google-plus:hover,
@@ -1557,24 +1559,26 @@ li:hover .ccr-thumbnail p {
   width: 100%;
 }
 #ccr-nav-top {
-  display: block;
-  padding: 0;
-  margin: 0;
+  height: 41px;
 }
 /* 2.1 - ccr-nav-top 
 ---------------------------------------------------------------------- */
+#ccr-nav-top ul {
+  margin: 0px;
+  padding: 0px;
+}
 #ccr-nav-top ul li {
-  list-style-type: none;
+  list-style: none;
   float: left;
   margin: 0px;
   padding: 0px;
-  border-bottom: 2px solid #343333;
 }
 #ccr-nav-top ul li a {
   color: #a5a3a5;
   display: inline-block;
   padding: 0px 10px;
   height: 40px;
+  line-height: 40px;
 }
 #ccr-nav-top ul li a:hover {
   color: #df1f2c;
@@ -1583,6 +1587,12 @@ li:hover .ccr-thumbnail p {
 }
 #ccr-nav-top ul li:hover {
   border-bottom: 2px solid #df1f2c;
+}
+#ccr-nav-top ul:last-child li:last-child {
+  margin-top: 5px;
+}
+#ccr-nav-top ul:last-child li:last-child:hover {
+  border-bottom: none;
 }
 #ccr-nav-top ul input {
   color: #5f5f5f;
@@ -1611,6 +1621,7 @@ li:hover .ccr-thumbnail p {
 #ccr-nav-main .nav li a i {
   font-size: .75em;
   padding-left: 10px;
+  line-height: 40px;
 }
 #ccr-nav-main .nav li ul a i {
   float: right;
@@ -1652,6 +1663,7 @@ li:hover .ccr-thumbnail p {
   font-size: 3em;
   color: #FFF;
   background: #d5d5d5;
+  line-height: 80px;
   width: 728px;
   height: 90px;
   float: right;
@@ -1661,7 +1673,7 @@ li:hover .ccr-thumbnail p {
 #ccr-nav-main {
   background-color: #343333;
   width: 100%;
-  display: block;
+  height: 40px;
 }
 #ccr-nav-main .navbar-collapse {
   padding-left: 0px;
@@ -1677,6 +1689,8 @@ li:hover .ccr-thumbnail p {
   font-size: 1.125em;
   background-color: #343333;
   padding: 0px 20px;
+  line-height: 40px;
+  height: 40px;
   -webkit-transition: all 0.15s ease-in;
   -moz-transition: all 0.15s ease-in;
   -ms-transition: all 0.15s ease-in;
@@ -1697,7 +1711,9 @@ li:hover .ccr-thumbnail p {
   font-weight: 400;
   font-size: 1.125em;
   padding: 0px 20px;
+  line-height: 40px;
   padding-right: 0px;
+  height: 40px;
 }
 .nav ul.sub-menu {
   display: none;
@@ -1756,6 +1772,7 @@ li:hover .ccr-thumbnail p {
   font-weight: 400;
   font-size: 1.07142857em;
   padding: 0px 20px;
+  line-height: 40px;
 }
 #ccr-nav-below-main .nav li a:hover {
   color: #df1f2c;
@@ -1765,6 +1782,7 @@ li:hover .ccr-thumbnail p {
 }
 #ccr-nav-below-main .ccr-language li {
   float: left;
+  line-height: 40px;
   padding: 0 10px;
 }
 #ccr-nav-below-main .ccr-language li:last-child {
@@ -1802,6 +1820,7 @@ li:hover .ccr-thumbnail p {
 #ccr-left-section .update-ribon {
   color: #FFF;
   font-size: 1.142857142857143em;
+  line-height: 40px;
   background-color: #df1f2c;
   width: 115px;
   height: 100%;
@@ -1819,6 +1838,9 @@ li:hover .ccr-thumbnail p {
 #ccr-left-section .update-news-text {
   float: left;
   padding-left: 10px;
+}
+#ccr-left-section .update-news-text ul {
+  line-height: 40px;
 }
 #ccr-left-section .update-right-border {
   width: 0;
@@ -1856,6 +1878,7 @@ li:hover .ccr-thumbnail p {
   margin-right: 0;
 }
 #social-buttons li p {
+  line-height: 22px;
   text-align: center;
   background-color: #f2f2f4;
   border: 1px solid #e3e2e2;
@@ -1880,6 +1903,7 @@ li:hover .ccr-thumbnail p {
 }
 #social-buttons a {
   text-align: center;
+  line-height: 40px;
   font-size: 1.3em;
   margin: 0 15px;
   background-color: #f2f2f4;
@@ -1970,6 +1994,7 @@ li:hover .ccr-thumbnail p {
 .sidebar-video + .date-like-comment,
 .sidebar-entertainment + .date-like-comment {
   background-color: #f2f2f4;
+  line-height: 40px;
   border: 1px solid  #e3e2e2;
   width: 100%;
   height: 40px;
@@ -1989,6 +2014,7 @@ li:hover .ccr-thumbnail p {
 #calendar caption {
   text-align: center;
   font-weight: bold;
+  line-height: 40px;
   font-size: 1.25em;
   background: #f2f2f4;
   height: 40px;
@@ -2002,6 +2028,7 @@ li:hover .ccr-thumbnail p {
 }
 #calendar td {
   height: 40px;
+  line-height: 40px;
   border: 1px solid #d7d7d7;
 }
 #calendar th,
@@ -2012,6 +2039,7 @@ li:hover .ccr-thumbnail p {
 #calendar a {
   color: #df1f2c;
   display: inline-block;
+  line-height: 40px;
   width: 100%;
 }
 #calendar a:hover {
@@ -2049,6 +2077,7 @@ li:hover .ccr-thumbnail p {
   border: none;
   padding: 0 2%;
   border: 1px solid #d7d7d7;
+  line-height: 20px;
   width: 71%;
   height: 28px;
   float: left;
@@ -2076,6 +2105,7 @@ li:hover .ccr-thumbnail p {
   font-weight: 700;
   background-color: #f2f2f4;
   height: 38px;
+  line-height: 38px;
   border: 1px solid #d7d7d7;
 }
 #ccr-find-on-fb .find-fb-title span {
@@ -2084,6 +2114,7 @@ li:hover .ccr-thumbnail p {
   background: #43609c;
   padding: 2px 10px;
   margin: 5px;
+  line-height: 24px;
 }
 #ccr-find-on-fb .find-on-fb-body {
   border: 1px solid #d7d7d7;
@@ -2172,6 +2203,7 @@ li:hover .ccr-thumbnail p {
 }
 #ccr-footer-sidebar .tagcloud a {
   color: #fff;
+  line-height: 40px;
   background-color: #df1f2c;
   padding: 5px 10px;
   margin-right: 7px;
@@ -2193,6 +2225,7 @@ li:hover .ccr-thumbnail p {
 .copyright,
 .copyright a {
   color: #fff;
+  line-height: 40px;
   text-align: center;
 }
 .footer-social-icons {
@@ -2206,6 +2239,7 @@ li:hover .ccr-thumbnail p {
   font-size: 1.35em;
   color: #fff;
   float: left;
+  line-height: 40px;
   text-align: center;
   width: 40px;
 }
@@ -2225,6 +2259,7 @@ li:hover .ccr-thumbnail p {
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   min-height: 60px;
+  line-height: 60px;
   margin-bottom: 0px;
 }
 #ccr-slide-main p a {
@@ -2282,6 +2317,7 @@ li:hover .ccr-thumbnail p {
 #ccr-latest-post-gallery li h4 a,
 #ccr-world-news li h5 a {
   display: inline-block;
+  line-height: 1.2em;
   width: 100%;
 }
 #ccr-latest-post-gallery .ccr-thumbnail p {
@@ -2360,6 +2396,7 @@ li:hover .ccr-thumbnail p {
   height: 252px;
 }
 #ccr-sports-gallery h5 {
+  line-height: 20px;
   font-size: 1.2em;
 }
 #ccr-sports-gallery .featured-sports-news-post h5 {
@@ -2428,12 +2465,16 @@ li:hover .ccr-thumbnail p {
   float: right;
 }
 #ccr-blog .blog-text .meta-data {
-  display: block;
-  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: inline-block;
+  line-height: 40px;
 }
 #ccr-blog article h1 {
   font-size: 1.25em;
   padding: 0 0 10px 0;
+  line-height: 30px;
 }
 #ccr-blog .like {
   margin-right: 20px;
@@ -2476,6 +2517,7 @@ li:hover .ccr-thumbnail p {
   font-weight: 300;
   font-size: 1.2em;
   background-color: rgba(0, 0, 0, 0.7);
+  line-height: 30px;
   position: absolute;
   margin: 0;
   bottom: 0;
@@ -2501,6 +2543,7 @@ li:hover .ccr-thumbnail p {
   color: #FFF;
   font-size: 1em;
   background-color: #df1f2c;
+  line-height: 40px;
   display: inline-block;
   width: 60px;
 }
@@ -2532,6 +2575,7 @@ li:hover .ccr-thumbnail p {
   padding: 15px 0;
   font-weight: 300;
   font-size: 1.5em;
+  line-height: 30px;
 }
 #ccr-blog-s3 .blog-text .meta-data {
   margin-top: 10px;
@@ -2546,6 +2590,7 @@ li:hover .ccr-thumbnail p {
   font-size: 1em;
   display: inline-block;
   width: 60px;
+  line-height: 30px;
 }
 #ccr-blog-s3 .blog-s3 {
   margin-bottom: 0;
@@ -2614,6 +2659,9 @@ li:hover .ccr-thumbnail p {
   margin-bottom: 6px;
 }
 #ccr-category-2 .like,
+#ccr-category-2 .comments {
+  line-height: 30px;
+}
 #ccr-category-latest-post li {
   width: 31.33%;
   float: left;
@@ -2640,10 +2688,12 @@ li:hover .ccr-thumbnail p {
   border-top: 1px solid #e3e2e2;
   border-bottom: 1px solid #e3e2e2;
   margin-bottom: 40px;
+  line-height: 200%;
 }
 #ccr-article h1 {
   padding: 10px 0;
   font-size: 1.8em;
+  line-height: 40px;
 }
 #ccr-article img {
   width: auto;
@@ -2693,6 +2743,7 @@ li:hover .ccr-thumbnail p {
 #ccr-article-related-post h5 a {
   display: inline-block;
   width: 100%;
+  line-height: 25px;
 }
 /* 13.2-A - ccr-home-sub-cats
 ---------------------------------------------------------------------- */
@@ -2714,6 +2765,7 @@ li:hover .ccr-thumbnail p {
 #ccr-home-sub-cats h5 a {
   display: inline-block;
   width: 100%;
+  line-height: 25px;
 }
 /* 13.3 - ccr-commnet
 ---------------------------------------------------------------------- */
@@ -2766,6 +2818,7 @@ li:hover .ccr-thumbnail p {
   outline-style: none;
   border: none;
   border: 1px solid #e3e2e2;
+  line-height: 20px;
   padding: 10px;
   margin: 20px 0;
   width: 48%;
@@ -2779,6 +2832,7 @@ li:hover .ccr-thumbnail p {
   outline-style: none;
   border: none;
   border: 1px solid #e3e2e2;
+  line-height: 20px;
   padding: 10px;
   margin: 20px 0;
   width: 100%;
@@ -2788,6 +2842,7 @@ li:hover .ccr-thumbnail p {
   outline-style: none;
   border: none;
   border: 1px solid #e3e2e2;
+  line-height: 20px;
   padding: 10px;
   margin: 20px 0;
   width: 100%;
@@ -2798,6 +2853,7 @@ li:hover .ccr-thumbnail p {
   color: #FFF;
   background-color: #df1f2c;
   height: 40px;
+  line-height: 20px;
   padding: 10px 20px;
   margin: 20px 0 40px 0;
   outline-style: none;
@@ -2827,6 +2883,7 @@ li:hover .ccr-thumbnail p {
 }
 #ccr-contact-sidebar address p {
   width: 100%;
+  line-height: 30px;
 }
 #ccr-contact-sidebar ul {
   margin-top: 20px;
@@ -2835,6 +2892,7 @@ li:hover .ccr-thumbnail p {
   float: left;
 }
 #ccr-contact-sidebar li a {
+  line-height: 40px;
   text-align: center;
   font-size: 1.35em;
   background-color: #f2f2f4;
@@ -2874,6 +2932,7 @@ li:hover .ccr-thumbnail p {
   border: none;
   padding: 0 10px;
   border: 1px solid #d7d7d7;
+  line-height: 20px;
   min-width: 50px;
   margin: 5px;
   width: 71%;
@@ -3051,6 +3110,7 @@ li:hover .ccr-thumbnail p {
   }
   #ccr-blog-s2 article h4 {
     font-size: 1em;
+    line-height: 25px;
   }
   #ccr-category-1 .ccr-thumbnail {
     display: block;
@@ -3095,6 +3155,7 @@ li:hover .ccr-thumbnail p {
   #ccr-latest-post-gallery li h4 a,
   #ccr-category-latest-post a {
     padding: 0 10px;
+    line-height: 40px;
     background-color: #f2f2f4;
   }
   #ccr-article-related-post li h5 a:hover,
