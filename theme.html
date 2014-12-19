@@ -135,74 +135,11 @@
 
       {% if is_home %}
       
-        <!-- featured post -->
-        <!-- get latest post -->
-        {% for post in posts %}
-        {% if loop.first %}
-        <section id="ccr-world-news">
-        	<section class="featured-world-news">
-            {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-              <a href="{{ post.permalink }}">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
-                {% endif %}
-              </a>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
-            <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
-            {% if post.author %}
-            <div class="post-contributor">
-              <h5>by {{ post.author.name }}</h5>
-            </div>
-            {% endif %}
-          </section>
-        </section>
-        {% endif %}<!-- end loop.first -->
-        {% endfor %}
-        <!-- end featured post -->
-        <!-- end -->
-      			
-        <!-- put below featured post in left column -->
-        <section id="ccr-blog">
-          <div class="ccr-gallery-ttile">
-            <span class="bottom"></span>
-            <p>Latest Stories</p>
-          </div>
-
-          {% for post in posts %}
-        	<article>
-        	  {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-        			<figure class="blog-thumbnails">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
-                {% endif %}
-        			</figure>          
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-        		<div class="blog-text">
-        			<a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
-              <p>{{ post.content|striptags|truncate(175, false, '...') }}</p>
-        			<div class="meta-data">					
-        				<span class="read-more"><a href="{{ post.permalink }}">Read More</a></span>
-        			</div>
-        		</div>
-        	</article>
-        	{% endfor %}
-
-        	<div class="clearfix"></div>
-        </section>
-        <!-- end ccr blog -->
+        <h1>is home</h1>
+        
+      {% elif post %}
+      
+        <h1>is post </h1>
         
       {% endif %}<!-- end if is_home, etc. -->
       
