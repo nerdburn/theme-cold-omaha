@@ -130,7 +130,7 @@
 
 
 {% if is_home %}
-<section id="ccr-main-section" style="border: 1px solid red;">
+<section id="ccr-main-section">
 	<div class="container">
 
 		<section id="ccr-left-section" class="col-md-8">
@@ -207,7 +207,7 @@
 		</section>
 		<!-- end ccr left section -->
 
-    <aside id="ccr-right-section" class="col-md-4 ccr-home" style="border: 1px solid blue;">
+    <aside id="ccr-right-section" class="col-md-4 ccr-home">
       
       <!-- PUT ASIDE HERE -->
  
@@ -343,7 +343,7 @@
             {% endif %}
             {% endfor %}
             {% endif %}					  
-						<a href="#">{{ post.title|truncate(54, false, '...') }}</a>
+						<a href="{{ post.permalink }}">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
 					{% endif %}
 					{% endfor %}
@@ -371,7 +371,7 @@
             {% endif %}
             {% endfor %}
             {% endif %}					  
-						<a href="#">{{ post.title|truncate(54, false, '...') }}</a>
+						<a href="{{ post.permalink }}">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
 					{% endif %}
 					{% endfor %}
