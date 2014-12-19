@@ -141,6 +141,14 @@
       
         <h1>is post </h1>
         
+      {% elif post.type == 'page' %}
+      
+        <h1>is page</h1>
+        
+      {% elif is_tag %}
+      
+        <h1>is tag</h1>
+        
       {% endif %}<!-- end if is_home, etc. -->
       
 		</section>
