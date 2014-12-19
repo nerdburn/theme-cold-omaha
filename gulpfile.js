@@ -8,9 +8,9 @@ var gulp = require('gulp'),
     path = require('path');
 
 var dir = {
-  js: '/assets/js/',
-  css: '/assets/css/',
-  less: '/assets/less/'
+  js: './assets/js/',
+  css: './assets/css/',
+  less: './assets/less/'
 }
 
 // easier to read variable
