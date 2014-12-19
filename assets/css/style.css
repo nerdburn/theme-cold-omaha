@@ -1568,6 +1568,7 @@ li:hover .ccr-thumbnail p {
   float: left;
   margin: 0px;
   padding: 0px;
+  border-bottom: 2px solid #343333;
 }
 #ccr-nav-top ul li a {
   color: #a5a3a5;
@@ -1660,7 +1661,7 @@ li:hover .ccr-thumbnail p {
 #ccr-nav-main {
   background-color: #343333;
   width: 100%;
-  height: 40px;
+  display: block;
 }
 #ccr-nav-main .navbar-collapse {
   padding-left: 0px;
@@ -1676,7 +1677,6 @@ li:hover .ccr-thumbnail p {
   font-size: 1.125em;
   background-color: #343333;
   padding: 0px 20px;
-  height: 40px;
   -webkit-transition: all 0.15s ease-in;
   -moz-transition: all 0.15s ease-in;
   -ms-transition: all 0.15s ease-in;
@@ -1698,7 +1698,6 @@ li:hover .ccr-thumbnail p {
   font-size: 1.125em;
   padding: 0px 20px;
   padding-right: 0px;
-  height: 40px;
 }
 .nav ul.sub-menu {
   display: none;
