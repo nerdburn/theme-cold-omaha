@@ -320,22 +320,7 @@
         <article id="ccr-article">
         	<h1>{{ post.title }}</h1>
 
-        	<div class="col-xs-3">
-            <div class="20pxSpacer"><time datetime="{{ post.created_at }}">{{ post.created_at }}</time></div>
-
-            {% if post.author %}
-            <div class="20pxSpacer">by {{ post.author.name }}</div>
-            {% endif %}
-
-            <div id="social-buttons">
-              <span class='st_facebook' displayText='Facebook'></span>
-              <span class='st_twitter' displayText='Tweet'></span>
-              <span class='st_googleplus' displayText='Google +'></span>
-              <span class='st_email' displayText='Email'></span>
-            </div>
-          </div>
-
-          <div class="col-xs-9" data-type-cleanup="true">
+          <div data-type-cleanup="true">
             {{ post.content }}
           </div>
 
