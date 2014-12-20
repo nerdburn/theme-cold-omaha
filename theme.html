@@ -577,7 +577,7 @@
 				<div class="tagcloud">
 				  {% for tag in site.tags %}
 				  {% if loop.index < 11 %}
-					<a href="/tag/{{tag}}">{{tag|format_tag(link=False, humanize=True)}}</a>
+					<a href="/tag/{{tag.name}}">{{tag.name|format_tag(link=False, humanize=True)}}</a>
 					{% endif %}
 					{% endfor %}
 				</div>
