@@ -329,7 +329,7 @@
       {% elif is_tag %}      
       
         <div class="current-page">
-        	<a href="/"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> {{ tag|humanize }}
+        	<a href="/"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> {{ tag|format_tag(link=False, humanize=True) }}
         </div>      
       
         <!-- put below featured post in left column -->
