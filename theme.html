@@ -5,7 +5,7 @@
 	<meta name="description" content="{{ site.bio }}" >
 	<meta name="author" content="{{ site.author }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ site.name }} | Cold Omaha</title>
+	<title>{% if is_page or post %}{{ post.title }} | {% endif %}{{ site.name }}</title>
 	
 	{{ header_meta }}
 	
@@ -16,16 +16,15 @@
 		<script src="js/html5shiv.js"></script>
 	<![endif]-->
 
-	<!-- share this
+	<!-- share this -->
 	<script type="text/javascript">var switchTo5x=true;</script>
   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
   <script type="text/javascript">stLight.options({publisher: "3da1a43d-5f6f-41bd-9743-d6ae71c62870", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-  -->
 </head>
 
 <body>
   
-<!-- facebook
+<!-- facebook -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -35,7 +34,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
--->
 
 <header id="ccr-header">
 	<section id="ccr-nav-top" class="fullwidth">
