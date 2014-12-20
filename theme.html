@@ -222,7 +222,60 @@
         
       {% elif post %}
       
-        <h1>is post </h1>
+        <div class="current-page">
+        	<a href="/"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> {{ post.title }}
+        </div>
+
+        <article id="ccr-article">
+        	<h1>{{ post.title }}</h1>
+
+        	<div class="col-xs-12">
+            {% if post.photos %}
+            {% for photo in post.photos %}
+            {% if loop.index == 1 %}
+              <a href="{{ post.permalink }}">
+                {% if photo %}
+                <img src="{{ photo.width_600 }}" />
+                {% else %}
+                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                {% endif %}
+              </a>
+            {% endif %}
+            {% endfor %}
+            {% endif %}				  
+          </div>
+
+          <div class="clearfix"></div>
+
+        	<div class="col-xs-3">
+            <div class="20pxSpacer"><time datetime="11/30/2014">{{ post.created_at }}</time></div>
+
+            {% if post.author %}
+            <div class="20pxSpacer">by <a href="#author">{{ post.author.name }}</a></div>
+            {% endif %}
+
+            <div id="social-buttons">
+              <span class='st_facebook' displayText='Facebook'></span>
+              <span class='st_twitter' displayText='Tweet'></span>
+              <span class='st_googleplus' displayText='Google +'></span>
+              <span class='st_email' displayText='Email'></span>
+            </div>
+          </div>
+
+          <div class="col-xs-9" data-type-cleanup="true">
+            {{ post.content }}
+          </div>
+
+        	<div class="article-tags">
+        		Filed under: 
+        		{% if post.tags %}
+        		{% for tag in post.tags %}
+        		  <a href="/tag/{{ tag.name }}">{{ tag.name }}</a>
+        		{% endfor %}
+        		{% endif %}
+        	</div>
+
+        </article>
         
       {% elif post.type == 'page' %}
       
@@ -309,7 +362,29 @@
       			{% endfor %}
       		</ul>
       	</section>
-      	{% endif %}      	 
+      	{% endif %}
+      	
+      	<section id="ccr-sidebar-newslater">
+      		<div class="ccr-gallery-ttile">
+      			<span></span> 
+      			<p><label for="sb-newslater"><strong>Newsletter</strong></label></p>
+      		</div>
+      		<div class="sidebar-newslater-form">
+      			<form class="ccr-gallery-ttile" action="#">
+      				<input type="email" id="sb-newslater" name="sb-newslater" placeholder="Enter your email address" required />
+      				<button type="submit">Subscribe</button>
+      			</form>
+      		</div>
+      	</section>
+
+      	<section id="ccr-find-on-fb">
+      		<div class="find-fb-title">
+      			<span><i class="fa fa-facebook"></i></span> Find us on Facebook
+      		</div>
+      		<div class="find-on-fb-body">
+      			<div class="fb-like-box" data-href="https://www.facebook.com/105theticket/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+      		</div>
+      	</section>      	      	 
       
     </aside>
     <!-- end aside / right section -->
