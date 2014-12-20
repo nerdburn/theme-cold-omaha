@@ -240,6 +240,41 @@
     <aside id="ccr-right-section" class="col-md-4 ccr-home">
       
       <!-- ASIDE GOES HERE -->
+
+
+      <!-- PUT ASIDE HERE -->
+
+        {% if posts %}
+      	<section id="sidebar-latest-video">
+      		<div class="ccr-gallery-ttile">
+      			<span></span> 
+      			<p><strong>Latest Videos</strong></p>
+      		</div>
+      		<ul>
+      		  {% for post in posts %}
+      		  {% if 'video' in post.tags %}
+      			<li>
+          	  {% if post.photos %}
+              {% for photo in post.photos %}
+              {% if loop.index == 1 %}
+                  {% if photo %}
+                  <img src="{{ photo.width_600 }}" />
+                  {% else %}
+                  <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                  {% endif %}
+              {% endif %}
+              {% endfor %}
+              {% endif %}
+      				<a href="{{ post.permalink }}">This is the 1st video headline text</a>
+      			</li>
+      			{% endif %}
+      			{% endfor %}
+      			<span class="read-more">
+              <a href="/tag/video">View All Videos</a>
+            </span>
+      		</ul>
+      	</section>
+      	{% endif %}      
       
     </aside>
     <!-- end aside / right section -->
