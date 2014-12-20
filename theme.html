@@ -156,7 +156,7 @@
                 {% endif %}
               {% endfor %}
             {% else %}
-              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
+              <img src="http://placehold.it/764x430/e5e5e5" alt="" />            
             {% endif %}
             <!-- end photo -->
             
@@ -201,7 +201,7 @@
               {% endfor %}
             {% else %}
               <figure class="blog-thumbnails">
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
+                <img src="http://placehold.it/254x179/e5e5e5" alt="" />            
               </figure>
             {% endif %}
             <!-- end photo -->
@@ -230,28 +230,32 @@
         	<h1>{{ post.title }}</h1>
 
         	<div class="col-xs-12">
+            <!-- begin photo -->
             {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-              <a href="{{ post.permalink }}">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+              {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+                  <a href="{{ post.permalink }}">
+                    {% if photo %}
+                    <img src="{{ photo.width_600 }}" />
+                    {% else %}
+                    <img src="http://placehold.it/764x430/e5e5e5" alt="" />
+                    {% endif %}
+                  </a>
                 {% endif %}
-              </a>
+              {% endfor %}
+            {% else %}
+              <img src="http://placehold.it/764x430/e5e5e5" alt="" />            
             {% endif %}
-            {% endfor %}
-            {% endif %}				  
+            <!-- end photo -->			  
           </div>
 
           <div class="clearfix"></div>
 
         	<div class="col-xs-3">
-            <div class="20pxSpacer"><time datetime="11/30/2014">{{ post.created_at }}</time></div>
+            <div class="20pxSpacer"><time datetime="{{ post.created_at }}">{{ post.created_at }}</time></div>
 
             {% if post.author %}
-            <div class="20pxSpacer">by <a href="#author">{{ post.author.name }}</a></div>
+            <div class="20pxSpacer">by {{ post.author.name }}</div>
             {% endif %}
 
             <div id="social-buttons">
@@ -307,17 +311,21 @@
       		  {% for post in posts %}
       		  {% if 'video' in post.tags %}
       			<li>
-          	  {% if post.photos %}
-              {% for photo in post.photos %}
-              {% if loop.index == 1 %}
-                  {% if photo %}
-                  <img src="{{ photo.width_600 }}" />
-                  {% else %}
-                  <img src="http://placehold.it/100x65/e5e5e5" alt="" />
+              <!-- begin photo -->
+              {% if post.photos %}
+                {% for photo in post.photos %}
+                  {% if loop.index == 1 %}
+                      {% if photo %}
+                      <img src="{{ photo.width_600 }}" />
+                      {% else %}
+                      <img src="http://placehold.it/100x65/e5e5e5" alt="" />
+                      {% endif %}
                   {% endif %}
+                {% endfor %}
+              {% else %}
+                <img src="http://placehold.it/100x65/e5e5e5" alt="" />
               {% endif %}
-              {% endfor %}
-              {% endif %}
+              <!-- end photo -->
       				<a href="{{ post.permalink }}">This is the 1st video headline text</a>
       			</li>
       			{% endif %}
@@ -345,17 +353,21 @@
       		  {% for post in posts %}
       		  {% if 'podcast' in post.tags %}
       			<li>
-          	  {% if post.photos %}
-              {% for photo in post.photos %}
-              {% if loop.index == 1 %}
-                  {% if photo %}
-                  <img src="{{ photo.width_600 }}" />
-                  {% else %}
-                  <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+              <!-- begin photo -->
+              {% if post.photos %}
+                {% for photo in post.photos %}
+                  {% if loop.index == 1 %}
+                      {% if photo %}
+                      <img src="{{ photo.width_600 }}" />
+                      {% else %}
+                      <img src="http://placehold.it/100x65/e5e5e5" alt="" />
+                      {% endif %}
                   {% endif %}
+                {% endfor %}
+              {% else %}
+                <img src="http://placehold.it/100x65/e5e5e5" alt="" />            
               {% endif %}
-              {% endfor %}
-              {% endif %}
+              <!-- end photo -->
       				<a href="{{ post.permalink }}">{{ post.title }}</a>
       			</li>
       			{% endif %}
@@ -424,13 +436,13 @@
                     {% if photo %}
                     <img src="{{ photo.width_600 }}" />
                     {% else %}
-                    <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                    <img src="http://placehold.it/65x65/e5e5e5" alt="" />
                     {% endif %}
                   </a>
                 {% endif %}
               {% endfor %}
             {% else %}
-              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
+              <img src="http://placehold.it/65x65/e5e5e5" alt="" />            
             {% endif %}
             <!-- end photo -->
             
@@ -457,13 +469,13 @@
                     {% if photo %}
                     <img src="{{ photo.width_600 }}" />
                     {% else %}
-                    <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                    <img src="http://placehold.it/65x65/e5e5e5" alt="" />
                     {% endif %}
                   </a>
                 {% endif %}
               {% endfor %}
             {% else %}
-              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
+              <img src="http://placehold.it/65x65/e5e5e5" alt="" />            
             {% endif %}
             <!-- end photo -->
 						<a href="{{ post.permalink }}">{{ post.title|truncate(54, false, '...') }}</a>
