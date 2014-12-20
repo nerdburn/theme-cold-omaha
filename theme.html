@@ -326,18 +326,10 @@
 
         </article>
         
-      {% elif is_tag %}
-      
-        <div class="current-page">
-        	<a href="/"><i class="fa fa-home"></i> <i class="fa fa-angle-double-right"></i></a> {{ tag }}
-        </div>      
+      {% elif is_tag %}      
       
         <!-- put below featured post in left column -->
         <section id="ccr-blog">
-          <div class="ccr-gallery-ttile">
-            <span class="bottom"></span>
-            <p>Latest Stories</p>
-          </div>
 
           {% for post in posts %}
         	<article>
