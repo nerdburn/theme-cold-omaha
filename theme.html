@@ -141,19 +141,25 @@
         {% if loop.first %}
         <section id="ccr-world-news">
         	<section class="featured-world-news">
+            
+            <!-- begin photo -->
             {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-              <a href="{{ post.permalink }}">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+              {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+                  <a href="{{ post.permalink }}">
+                    {% if photo %}
+                    <img src="{{ photo.width_600 }}" />
+                    {% else %}
+                    <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                    {% endif %}
+                  </a>
                 {% endif %}
-              </a>
+              {% endfor %}
+            {% else %}
+              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
             {% endif %}
-            {% endfor %}
-            {% endif %}
+            <!-- end photo -->
+            
             <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
             <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
             {% if post.author %}
@@ -177,19 +183,29 @@
 
           {% for post in posts %}
         	<article>
-        	  {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-        			<figure class="blog-thumbnails">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+        	  
+            <!-- begin photo -->
+            {% if post.photos %}
+              {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+          			  <figure class="blog-thumbnails">
+                    <a href="{{ post.permalink }}">
+                      {% if photo %}
+                      <img src="{{ photo.width_600 }}" />
+                      {% else %}
+                      <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                      {% endif %}
+                    </a>
+                  </figure>
                 {% endif %}
-        			</figure>          
+              {% endfor %}
+            {% else %}
+              <figure class="blog-thumbnails">
+                <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
+              </figure>
             {% endif %}
-            {% endfor %}
-            {% endif %}
+            <!-- end photo -->
+        
         		<div class="blog-text">
         			<a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
               <p>{{ post.content|striptags|truncate(175, false, '...') }}</p>
@@ -254,19 +270,25 @@
 				  {% for post in posts %}
 				  {% if loop.index > 4 and loop.index < 8 %}
 					<li>
+					  
+            <!-- begin photo -->
             {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-              <a href="{{ post.permalink }}">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+              {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+                  <a href="{{ post.permalink }}">
+                    {% if photo %}
+                    <img src="{{ photo.width_600 }}" />
+                    {% else %}
+                    <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                    {% endif %}
+                  </a>
                 {% endif %}
-              </a>
+              {% endfor %}
+            {% else %}
+              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
             {% endif %}
-            {% endfor %}
-            {% endif %}					  
+            <!-- end photo -->
+            
 						<a href="{{ post.permalink }}">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
 					{% endif %}
@@ -282,19 +304,23 @@
 				  {% for post in posts %}
 				  {% if loop.index < 4 and loop.index > 0 %}
 					<li>
+            <!-- begin photo -->
             {% if post.photos %}
-            {% for photo in post.photos %}
-            {% if loop.index == 1 %}
-              <a href="{{ post.permalink }}">
-                {% if photo %}
-                <img src="{{ photo.width_600 }}" />
-                {% else %}
-                <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+              {% for photo in post.photos %}
+                {% if loop.index == 1 %}
+                  <a href="{{ post.permalink }}">
+                    {% if photo %}
+                    <img src="{{ photo.width_600 }}" />
+                    {% else %}
+                    <img src="http://placehold.it/400x300/e5e5e5" alt="" />
+                    {% endif %}
+                  </a>
                 {% endif %}
-              </a>
+              {% endfor %}
+            {% else %}
+              <img src="http://placehold.it/400x300/e5e5e5" alt="" />            
             {% endif %}
-            {% endfor %}
-            {% endif %}					  
+            <!-- end photo -->
 						<a href="{{ post.permalink }}">{{ post.title|truncate(54, false, '...') }}</a>
 					</li>
 					{% endif %}
