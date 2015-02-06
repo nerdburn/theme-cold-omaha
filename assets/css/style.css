@@ -1347,15 +1347,15 @@ img {
   height: 40px;
   line-height: 40px;
   background: #f2f2f4;
-  border-right: 5px solid #df1f2c;
-  border-left: 8px solid #df1f2c;
+  /*border-right: 5px solid #df1f2c;*/
+  border-left: 8px solid #727272;
 }
 .ccr-gallery-ttile span {
   margin: 13px 0;
   float: left;
   border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-left: 5px solid #df1f2c;
+  /*border-bottom: 7px solid transparent;
+  border-left: 5px solid #df1f2c;*/
   margin-right: 10px;
 }
 .ccr-gallery-ttile p {
@@ -1393,7 +1393,7 @@ img {
 .like-comment-readmore .read-more,
 .read-more a {
   color: #fff;
-  background-color: #df1f2c;
+  background-color: #00009a;
   display: inline-block;
   padding: 0px 10px;
   line-height: 30px;
@@ -2087,7 +2087,7 @@ li:hover .ccr-thumbnail p {
 #ccr-sidebar-newslater button {
   color: #FFF;
   font-weight: 700;
-  background-color: #df1f2c;
+  background-color: #00009a;
   outline-style: none;
   margin: 0;
   padding: 0;
