@@ -88,26 +88,13 @@
 				<div class="collapse navbar-collapse ccr-nav-main">
 					<ul class="nav navbar-nav">
 						<li><a href="/">Home</a></li>
-						<li class="dropdown">
-							<a href="/tag/sports">Sports <i class="fa fa-caret-down"></i></a>
-							<ul class="sub-menu">
-					      <li><a href="/tag/football">Football</a></li>
-					      <li><a href="/tag/hockey">Hockey</a></li>
-							  <li><a href="/tag/baseball">Baseball</a></li>
-					    </ul>
-						</li>
-            <li class="dropdown">
-							<a href="/tag/teams">Teams <i class="fa fa-caret-down"></i></a>
-							<ul class="sub-menu">
-		          	<li><a href="/tag/vikings">Vikings</a></li>
-		          	<li><a href="/tag/wild">Wild</a></li>
-						  	<li><a href="/tag/twins">Twins</a></li>
-                <li><a href="/tag/timberwolves">Timberwolves</a></li>
-                <li><a href="/tag/gophers">Gophers</a></li>
-			        </ul>
-						</li>
+						<li><a href="/page/about">About</a></li>
+                        <li><a href="#">Columnists</a></li>
 						<li><a href="/tag/podcast">Podcasts</a></li>
-            <li><a href="/tag/video">Videos</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="http://www.105theticket.com" target="_blank">105theticket.com</a></li>
+                        <li><a href="#">Write For Us</a></li>
+            			<!--<li><a href="/tag/video">Videos</a></li>-->
 					</ul>
 				</div>
         
@@ -386,7 +373,7 @@
 
       <!-- PUT ASIDE HERE -->
 
-        {% if posts %}
+        <!--{% if posts %}
       	<section id="sidebar-latest-video">
       		<div class="ccr-gallery-ttile">
       			<span></span> 
@@ -395,9 +382,9 @@
       		<ul>
       		  {% for post in posts %}
       		  {% if 'video' in post.tags %}
-      			<li>
+      			<li>-->
               <!-- begin photo -->
-              {% if post.photos %}
+              <!--{% if post.photos %}
                 {% for photo in post.photos %}
                   {% if loop.index == 1 %}
                       {% if photo %}
@@ -409,9 +396,9 @@
                 {% endfor %}
               {% else %}
                 <img src="http://placehold.it/100x65/e5e5e5" alt="" />
-              {% endif %}
+              {% endif %}-->
               <!-- end photo -->
-      				<a href="{{ post.permalink }}">{{ post.title }}</a>
+      				<!--<a href="{{ post.permalink }}">{{ post.title }}</a>
       			</li>
       			{% endif %}
       			{% endfor %}
@@ -420,7 +407,7 @@
             </span>
       		</ul>
       	</section>
-      	{% endif %}     
+      	{% endif %} -->    
       	
         <section id="ccr-sidebar-add-place">
           <div class="sidebar-add-place">
@@ -460,26 +447,13 @@
       		</ul>
       	</section>
       	{% endif %}
-      	
-      	<section id="ccr-sidebar-newslater">
-      		<div class="ccr-gallery-ttile">
-      			<span></span> 
-      			<p><label for="sb-newslater"><strong>Newsletter</strong></label></p>
-      		</div>
-      		<div class="sidebar-newslater-form">
-      			<form class="ccr-gallery-ttile" action="#">
-      				<input type="email" id="sb-newslater" name="sb-newslater" placeholder="Enter your email address" required />
-      				<button type="submit">Subscribe</button>
-      			</form>
-      		</div>
-      	</section>
 
       	<section id="ccr-find-on-fb">
       		<div class="find-fb-title">
       			<span><i class="fa fa-facebook"></i></span> Find us on Facebook
       		</div>
       		<div class="find-on-fb-body">
-      			<div class="fb-like-box" data-href="https://www.facebook.com/105theticket/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+      			<div class="fb-like-box" data-href="https://www.facebook.com/coldomaha/" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
       		</div>
       	</section>      	      	 
       
