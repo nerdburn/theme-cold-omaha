@@ -17,8 +17,8 @@
 
 	<!-- share this -->
 	<script type="text/javascript">var switchTo5x=true;</script>
-  <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-  <script type="text/javascript">stLight.options({publisher: "3da1a43d-5f6f-41bd-9743-d6ae71c62870", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "3da1a43d-5f6f-41bd-9743-d6ae71c62870", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 </script>
 
 <header id="ccr-header">
-	<section id="ccr-nav-top" class="fullwidth">
+	<!--<section id="ccr-nav-top" class="fullwidth">
 		<div class="">
 			<div class="container">
 				<nav class="top-menu">
@@ -47,10 +47,10 @@
             {% endfor %}
             {% endif %}						
 					</ul>
-					<ul class="right-top-menu pull-right">
+					<ul class="right-top-menu pull-right"> -->
 						<!-- <li><a href="#">Login</a></li> -->
-						<li><a href="/page/contribute">Contribute</a></li>
-						<li><a href="/page/report">Report</a></li>
+						<!--<li><a href="/page/contribute">Contribute</a></li>
+						<li><a href="/page/report">Report</a></li>-->
 						<!--
 						<li>
 							<form class="form-inline" role="form" action="#">
@@ -59,11 +59,11 @@
 							</form>
 						</li>
 						-->
-					</ul>
+					<!--</ul>
 				</nav>
 			</div>
 		</div>	
-	</section>
+	</section>-->
 	
 	<section id="ccr-site-title">
 		<div class="container">
@@ -215,7 +215,10 @@
 
         <article id="ccr-article">
         	<h1>{{ post.title }}</h1>
-
+			<div class="20pxSpacer"><time datetime="{{ post.created_at }}">{{ post.created_at }}</time></div>
+            {% if post.author %}
+            <div class="20pxSpacer">by {{ post.author.name }}</div>
+            {% endif %}
           <!--
         	<div class="col-xs-12">
             {% if post.photos %}
@@ -236,7 +239,7 @@
           </div>
           -->
 
-        	<div class="col-xs-3">
+        	<!--<div class="col-xs-3">
             <div class="20pxSpacer"><time datetime="{{ post.created_at }}">{{ post.created_at }}</time></div>
 
             {% if post.author %}
@@ -244,25 +247,29 @@
             {% endif %}
 
             <div id="social-buttons">
-              <span class='st_facebook' displayText='Facebook'></span>
-              <span class='st_twitter' displayText='Tweet'></span>
-              <span class='st_googleplus' displayText='Google +'></span>
-              <span class='st_email' displayText='Email'></span>
+              <span class='st_facebook_large' displayText='Facebook'></span>
+              <span class='st_twitter_large' displayText='Tweet'></span>
+              <span class='st_googleplus_large' displayText='Google +'></span>
+              <span class='st_email_large' displayText='Email'></span>
             </div>
-          </div>
+          </div>-->
 
-          <div class="col-xs-9" data-type-cleanup="true">
+          <div class="col-xs-9" data-type-cleanup="true" style="margin-bottom: 20px;">
             {{ post.content }}
           </div>
 
         	<div class="article-tags">
-        		Filed under: 
+        		<strong>Filed under:</strong> 
         		{% if post.tags %}
         		{% for tag in post.tags %}
-        		  <a href="/tag/{{ tag }}">{{ tag|format_tag(link=False, humanize=True) }}</a>
+        		  <a href="/tag/{{ tag }}">{{ tag|format_tag(link=False, humanize=True) }}</a> &nbsp;
         		{% endfor %}
         		{% endif %}
         	</div>
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+            <span class='st_googleplus_large' displayText='Google +'></span>
+            <span class='st_email_large' displayText='Email'></span>
 
         </article>
         
