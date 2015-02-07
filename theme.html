@@ -135,13 +135,13 @@
                     {% if photo %}
                     <img src="{{ photo.width_600 }}" />
                     {% else %}
-                    <img src="http://placehold.it/764x430/e5e5e5" alt="" />
+                    <img src="http://placehold.it/764x300/e5e5e5" alt="" />
                     {% endif %}
                   </a>
                 {% endif %}
               {% endfor %}
             {% else %}
-              <img src="http://placehold.it/764x430/e5e5e5" alt="" />            
+              <img src="http://placehold.it/764x300/e5e5e5" alt="" />            
             {% endif %}
             <!-- end photo -->
             
@@ -234,7 +234,7 @@
 			<h1>{{ post.title }}</h1>
 			<div class="20pxSpacer"><time datetime="{{ post.created_at }}">{{ post.created_at }}</time></div>
             {% if post.author %}
-            <div class="20pxSpacer">by {{ post.author.name }}</div>
+            <div class="post-contributor"><h5>by {{ post.author.name }}</h5></div>
             {% endif %}
           <!--
         	<div class="col-xs-12">
