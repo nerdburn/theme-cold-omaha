@@ -119,46 +119,7 @@
 		<section id="ccr-left-section" class="col-md-8">
 
       {% if is_home %}
-      
-        <!-- featured post -->
-        <!-- get latest post -->
-        {% for post in posts %}
-        {% if loop.first %}
-        <section id="ccr-world-news">
-        	<section class="featured-world-news">
-            
-            <!-- begin photo -->
-            {% if post.photos %}
-              {% for photo in post.photos %}
-                {% if loop.index == 1 %}
-                  <a href="{{ post.permalink }}">
-                    {% if photo %}
-                    <img src="{{ photo.width_600 }}" />
-                    {% else %}
-                    <img src="http://placehold.it/764x300/e5e5e5" alt="" />
-                    {% endif %}
-                  </a>
-                {% endif %}
-              {% endfor %}
-            {% else %}
-              <img src="http://placehold.it/764x300/e5e5e5" alt="" />            
-            {% endif %}
-            <!-- end photo -->
-            
-            <a href="{{ post.permalink }}"><h1>{{ post.title }}</h1></a>
-            <p>{{ post.content|striptags|truncate(280, false, '...') }}</p>
-            {% if post.author %}
-            <div class="post-contributor">
-              <h5>by {{ post.author.name }}</h5>
-            </div>
-            {% endif %}
-          </section>
-        </section>
-        {% endif %}<!-- end loop.first -->
-        {% endfor %}
-        <!-- end featured post -->
-        <!-- end -->
-        
+              
         <!-- put below featured post in left column -->
         <section id="ccr-blog">
           <div class="ccr-gallery-ttile">
