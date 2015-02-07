@@ -1811,6 +1811,7 @@ li:hover .ccr-thumbnail p {
 #ccr-left-section.col-md-8 {
   border-right: 1px solid #e3e2e2;
   padding-right: 15px;
+  margin-top: 15px;
 }
 #ccr-left-section .ccr-last-update {
   background-color: #f2f2f4;
